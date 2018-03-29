@@ -1,0 +1,42 @@
+*{
+	padding: 0;
+	margin: 0;
+}
+
+#container{
+	width: 970px;
+	height: 970px;
+	border: none;
+	margin: 0 auto;
+}
+
+.buildings{
+	width: 150px;
+	height: 150px;
+    display: inline-block;
+    vertical-align: top;
+	border: 1px solid black;
+}
+
+.red{
+	color: red;
+}
+
+.blue{
+	color: blue;
+}
+
+.violet{
+	color: rgb(243, 70, 177);
+}
+
+#gold{
+	color: rgb(238, 180, 34);
+}
+
+#activities{
+	width: 620px;
+	height: 150px;
+	overflow: scroll;
+	border: 1px solid black
+}

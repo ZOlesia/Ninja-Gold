@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'golds/css/style.css' %}">
+</head>
+<body>
+    <div id="container">
+		<p>Your gold: <span id="gold">{{ request.session.gold }}</span></p>
+		<div class="buildings">
+			<p>Farm</p>
+			<p>(earns 10-20 golds)</p>
+            <form action="/process_money" method="post" id="farm">
+                {% csrf_token %}
+				<input type="hidden" name="building" value="farm" />
+				<input type="submit" value="Find Gold!"/>
+			</form>
+		</div>
+
+		<div class="buildings">
+			<p>Cave</p>
+			<p>(earns 5-10 golds)</p>
+            <form action="/process_money" method="post" id="cave">
+                {% csrf_token %}
+				<input type="hidden" name="building" value="cave" />
+				<input type="submit" value="Find Gold!"/>
+			</form>
+		</div>
+
+		<div class="buildings">
+			<p>House</p>
+			<p>(earns 2-5 golds)</p>
+            <form action="/process_money" method="post" id="house">
+                {% csrf_token %}
+				<input type="hidden" name="building" value="house" />
+				<input type="submit" value="Find Gold!"/>
+			</form>
+		</div>
+
+		<div class="buildings">
+			<p>Casino</p>
+			<p>(earns/takes 0-50 golds)</p>
+            <form action="/process_money" method="post" id="casino">
+                {% csrf_token %}
+				<input type="hidden" name="building" value="casino" />
+				<input type="submit" value="Find Gold!"/>
+			</form>
+		</div>
+			<p>Activities</p>
+			<div id="activities">
+				{% for i in request.session.messages reversed %}
+					<p class="{{ i.color }}">{{ i.msgs }} {{ i.play }} {{ i.number }} golds from the {{ i.building }} ( {{ i.today }} )</p>
+				{% endfor %}
+			</div>
+		<form action="/reset" method="post">
+			{% csrf_token %}
+			<input type="submit" value="Reset the Golds">
+		</form>
+</body>
+</html>
